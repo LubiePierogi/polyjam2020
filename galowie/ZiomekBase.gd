@@ -21,6 +21,9 @@ var base_speed = 600
 var max_zycko = 100
 var zycko = max_zycko
 
+var pil_napoj = false
+var napoj_time = 0
+
 var team = "no" # "galia", "rzym"
 
 
@@ -90,6 +93,8 @@ func _physics_process(delta):
 		move_and_slide(wywalenie_w_kosmos.where)
 		if wywalenie_w_kosmos.should_usunac():
 			znikanko()
+	if napoj_time >0:
+		napoj_time -= delta
 			
 			
 
@@ -108,6 +113,11 @@ func calculate_move(target, position, speed, delta):
 
 func contact(object):
 	var tamten = object.get_owner()
+	if tamten.get_script().get_path() == "res://Kociolek.gd":
+		print ("Getting boosted!")
+		zycko = max_zycko
+		pil_napoj = true
+		napoj_time = 60
 	if tamten.get_script().get_path() == "res://ZiomekBase.gd":
 		if (tamten.team == "rzym") && team == "galia":
 			print ("RZYMIANIE!")
