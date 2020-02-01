@@ -12,6 +12,8 @@ var target_point = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Area2D.connect("area_entered", self, "contact")
+	
 	pass # Replace with function body.
 
 func get_speed():
@@ -31,3 +33,6 @@ func calculate_move(target, position, speed, delta):
 	var res = (target_point - position).normalized() * get_speed()
 	var res2 = (target_point - position) / delta
 	return res if res.length() < res2.length() else res2
+
+func contact(object):
+	print("Wypad")
