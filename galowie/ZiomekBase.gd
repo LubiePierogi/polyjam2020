@@ -52,4 +52,7 @@ func calculate_move(target, position, speed, delta):
 	return res if res.length() < res2.length() else res2
 
 func contact(object):
-	print("Wypad")
+	if ((object.get_owner()).team == "rzym") && team == "galia":
+		print ("RZYMIANIE!")
+	elif ((object.get_owner()).team== "galia") &&  team == "rzym":
+		print ("SQUAD 7 MOVE OUT!")
