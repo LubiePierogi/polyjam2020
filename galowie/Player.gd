@@ -81,7 +81,9 @@ func create_unit(scene):
 func _ready():
 	create_unit(Gal).get_node("ZiomekBase").position = Vector2(400,600)
 	create_unit(Gal).get_node("ZiomekBase").position = Vector2(500,600)
-	create_unit(Gal).get_node("ZiomekBase").position = Vector2(600,600)
+	var haha = create_unit(Gal).get_node("ZiomekBase")
+	haha.position = Vector2(600,600)
+	#haha.zycko = -3
 	create_unit(Gal).get_node("ZiomekBase").position = Vector2(700,600)
 	#add_unit(get_node("../Reperix"))
 	#add_unit(get_node("../Almostherix"))
@@ -95,8 +97,17 @@ func ogarnij_input():
 			next_targets[selected_unit] = get_viewport().get_mouse_position()
 
 func iterate_selection():
+	var old_selection = selected_unit
 	if len(units) > 0:
-		selected_unit = (selected_unit + 1) % len(units)
+		while 1:
+			selected_unit = (selected_unit + 1) % len(units)
+			if units[selected_unit].get_node("ZiomekBase").is_alive():
+				return
+			if old_selection == selected_unit:
+				selected_unit = -1
+				return
+			if old_selection == -1:
+				old_selection = 0 # żeby jak nic nie było zaznaczony to na zerze już wywalało
 	else:
 		selected_unit = -1
 

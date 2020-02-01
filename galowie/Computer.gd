@@ -25,7 +25,9 @@ func create_unit(scene):
 func _ready():
 	rng.randomize() # Replace with function body.
 	create_unit(Rzymianin).get_node("ZiomekBase").position = Vector2(100,100)
-	create_unit(Rzymianin).get_node("ZiomekBase").position = Vector2(400,100)
+	var haha = create_unit(Rzymianin).get_node("ZiomekBase")
+	haha.position = Vector2(400,100)
+	#haha.zycko = 0
 	create_unit(Rzymianin).get_node("ZiomekBase").position = Vector2(700,100)
 
 
