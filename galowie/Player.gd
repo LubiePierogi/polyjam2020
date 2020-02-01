@@ -76,6 +76,17 @@ func create_unit(scene):
 	add_child(unit)
 	add_unit(unit)
 	return unit
+	
+func delete_unit(unit):
+	remove_child(unit)
+	for i in units:
+		if units[i] == unit:
+			units.erase(i)
+			if selected_unit == i:
+				selected_unit = -1
+			elif selected_unit > i:
+				selected_unit -= 1
+			break
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
