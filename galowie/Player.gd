@@ -126,6 +126,23 @@ func _on_Timer_timeout():
 		i = i + 1
 	return
 	
+func on_signal_start_turn():
+	var i = 0
+	while i < len(units):
+		var ziomek = units[i].get_node("ZiomekBase")
+		ziomek.set_target(next_targets[i])
+		ziomek.set_animated(true)
+		next_targets[i] = null
+		i += 1
+	
+func on_signal_finish_turn():
+	var i = 0
+	while i < len(units):
+		var ziomek = units[i].get_node("ZiomekBase")
+		ziomek.set_target(null)
+		ziomek.set_animated(false)
+		i += 1
+	
 	vec1 = get_node("../Reperix").get_position()
 	vec1 = vecklik - vec1
 	get_node("../Reperix/ZiomekBase").target_point = vec1
