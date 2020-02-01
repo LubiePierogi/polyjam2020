@@ -11,6 +11,7 @@
 script = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 script = ExtResource( 1 )
 
@@ -19,6 +20,8 @@ script = ExtResource( 3 )
 
 [node name="Computer" parent="." instance=ExtResource( 5 )]
 script = ExtResource( 6 )
-[connection signal="timeout" from="Timer" to="Player" method="_on_Timer_timeout"]
-[connection signal="timeout" from="Timer" to="Computer" method="_on_Timer_timeout"]
+[connection signal="EnemyTurn" from="Timer" to="Player" method="on_signal_finish_turn"]
+[connection signal="EnemyTurn" from="Timer" to="Computer" method="on_signal_start_turn"]
+[connection signal="PlayerTurn" from="Timer" to="Player" method="on_signal_start_turn"]
+[connection signal="PlayerTurn" from="Timer" to="Computer" method="on_signal_finish_turn"]
 [connection signal="timeout" from="Timer" to="Timer" method="_on_Timer_timeout"]

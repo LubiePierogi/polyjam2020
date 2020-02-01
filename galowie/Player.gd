@@ -79,28 +79,19 @@ func create_unit(scene):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	units.push_back("xddddd")
-	units.push_back("12321")
-	units.push_back(10000)
-	print("jabłuszka xd")
-	print(units)
-	units.clear()
 	create_unit(Gal).get_node("ZiomekBase").position = Vector2(400,600)
 	create_unit(Gal).get_node("ZiomekBase").position = Vector2(500,600)
 	create_unit(Gal).get_node("ZiomekBase").position = Vector2(600,600)
 	create_unit(Gal).get_node("ZiomekBase").position = Vector2(700,600)
 	#add_unit(get_node("../Reperix"))
 	#add_unit(get_node("../Almostherix"))
-	print(units)
 
 
 func ogarnij_input():
 	if (Input.is_action_just_pressed("ui_iteration")):
 		iterate_selection()
 	if (Input.is_mouse_button_pressed(BUTTON_RIGHT)):
-		print("xd")
 		if selected_unit > -1 && selected_unit < len(units):
-			print("xdd")
 			next_targets[selected_unit] = get_viewport().get_mouse_position()
 
 func iterate_selection():
@@ -108,7 +99,6 @@ func iterate_selection():
 		selected_unit = (selected_unit + 1) % len(units)
 	else:
 		selected_unit = -1
-	print(selected_unit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -118,11 +108,9 @@ func _process(delta):
 	
 func _on_Timer_timeout():
 	var i = 0
-	print("ewriopoewrpiorwe")
 	while i < len(units):
 		units[i].get_node("ZiomekBase").target_point = next_targets[i]
 		next_targets[i] = null
-		print("hahahahahahaha")
 		i = i + 1
 	return
 	
@@ -143,10 +131,4 @@ func on_signal_finish_turn():
 		ziomek.set_animated(false)
 		i += 1
 	
-	vec1 = get_node("../Reperix").get_position()
-	vec1 = vecklik - vec1
-	get_node("../Reperix/ZiomekBase").target_point = vec1
-	vec1=get_node("../Almostherix").get_position()
-	vec1= vecklik - vec1
-	get_node("../Almostherix/ZiomekBase").target_point = vec1
-	pass # Replace with function body.
+
