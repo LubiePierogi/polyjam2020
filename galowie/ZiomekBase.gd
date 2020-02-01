@@ -28,7 +28,6 @@ func _physics_process(delta):
 				delta))
 
 func calculate_move(target, position, speed, delta):
-	print(delta)
 	var res = (target_point - position).normalized() * get_speed()
 	var res2 = (target_point - position) / delta
 	return res if res.length() < res2.length() else res2
