@@ -17,7 +17,7 @@ func _ready():
 	pass # Replace with function body.
 
 func get_speed():
-	return 100
+	return 600
 
 func set_target(point):
 	target_point = point
