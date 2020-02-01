@@ -3,6 +3,7 @@ extends Timer
 var turn = -1
 signal PlayerTurn
 signal EnemyTurn
+signal CallBoss
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,9 +19,10 @@ func _ready():
 
 func _on_Timer_timeout():
 	turn += 1
-	turn %= 2
-	if (turn == 0):
+	if (turn % 2 == 0):
 		emit_signal("PlayerTurn")
 	else:
 		emit_signal("EnemyTurn")
+	if turn == 40:
+		emit_signal ("CallBoss")
 	pass # Replace with function body.
