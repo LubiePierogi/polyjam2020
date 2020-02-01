@@ -33,14 +33,6 @@ func _ready():
 func _process(delta):
 	pass
 	
-func _on_Timer_timeout():
-	var i = 0
-	while i < len(units):
-		units[i].get_node("ZiomekBase").target_point = Vector2(\
-			rng.randf_range(100, 800) ,rng.randf_range(100, 800))
-		next_targets[i] = null
-		i = i + 1
-	return
 
 
 
@@ -48,3 +40,31 @@ func _on_Timer_timeout():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func plan_next_turn():
+	var i = 0
+	while i < len(units):
+		next_targets[i] = Vector2(\
+			rng.randf_range(100.0, 800.0),\
+			rng.randf_range(100.0, 400.0) \
+		)
+		i += 1
+	
+
+func on_signal_start_turn():
+	plan_next_turn()
+	var i = 0
+	while i < len(units):
+		var ziomek = units[i].get_node("ZiomekBase")
+		ziomek.set_target(next_targets[i])
+		ziomek.set_animated(true)
+		next_targets[i] = null
+		i += 1
+	
+func on_signal_finish_turn():
+	var i = 0
+	while i < len(units):
+		var ziomek = units[i].get_node("ZiomekBase")
+		ziomek.set_target(null)
+		ziomek.set_animated(false)
+		i += 1
