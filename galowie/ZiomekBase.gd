@@ -85,7 +85,7 @@ func _physics_process(delta):
 	elif is_wywalony_w_kosmos():
 		#scale = #$@###$##$#@$#$#%$$#%*&^&(*&^%wywalenie_w_kosmos.get_powiekszenie()
 		scale = Vector2(1,1) * wywalenie_w_kosmos.get_powiekszenie()
-		move_and_slide(wywalenie_w_kosmos.sila)
+		move_and_slide(wywalenie_w_kosmos.where)
 		if wywalenie_w_kosmos.czas > 30:
 			znikanko()
 			
@@ -106,9 +106,9 @@ func calculate_move(target, position, speed, delta):
 
 func contact(object):
 	var tamten = object.get_owner()
-	if tamten.get_script().get_path() == "res://ZiomekBase.gd"
-	if (tamten.team == "rzym") && team == "galia":
-		print ("RZYMIANIE!")
-		tamten.wywal_w_kosmos(Vector2(1,0), 100)
-	elif (tamten.team == "galia") &&  team == "rzym":
-		print ("SQUAD 7 MOVE OUT!")
+	if tamten.get_script().get_path() == "res://ZiomekBase.gd":
+		if (tamten.team == "rzym") && team == "galia":
+			print ("RZYMIANIE!")
+			tamten.wywal_w_kosmos(Vector2(1,0), 100)
+		elif (tamten.team == "galia") &&  team == "rzym":
+			print ("SQUAD 7 MOVE OUT!")
