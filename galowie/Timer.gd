@@ -1,9 +1,8 @@
 extends Timer
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var turn = -1
+signal PlayerTurn
+signal EnemyTurn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,3 +14,13 @@ func _ready():
 #	pass
 
 
+
+
+func _on_Timer_timeout():
+	turn += 1
+	turn %= 2
+	if (turn == 0):
+		emit_signal("PlayerTurn")
+	else:
+		emit_signal("EnemyTurn")
+	pass # Replace with function body.
