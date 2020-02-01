@@ -36,7 +36,12 @@ func _process(delta):
 	pass
 	
 
-
+func delete_unit(unit):
+	remove_child(unit)
+	for i in range(len(units)):
+		if units[i] == unit:
+			units.erase(i)
+			break
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

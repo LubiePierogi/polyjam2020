@@ -41,9 +41,9 @@ func is_alive():
 	return zycko > 0.0
 
 func zrob_damage(ile):
+	var zycko_przed = zycko
 	zycko -= ile
-	if zycko < 0.0:
-		
+	if zycko <= 0.0 && zycko_przed > 0.0:
 		return true
 	return false
 
@@ -69,7 +69,10 @@ func wywal_w_kosmos(where:Vector2, jak_bardzo_w_gore:float):
 	wywalenie_w_kosmos = WywalenieWKosmos.instance()
 	wywalenie_w_kosmos.w_gore = jak_bardzo_w_gore
 	wywalenie_w_kosmos.where = where
-	get_node("CollisionShape2D").disabled = true
+	add_child(wywalenie_w_kosmos)
+	collision_layer &= (1 ^ 0xffffffff)
+	collision_mask &= (1 ^ 0xffffffff)
+	print("wywalił")
 	
 	
 
@@ -83,10 +86,9 @@ func _physics_process(delta):
 				move_and_slide(calculate_move(target_point, position, get_speed(),\
 					delta))
 	elif is_wywalony_w_kosmos():
-		#scale = #$@###$##$#@$#$#%$$#%*&^&(*&^%wywalenie_w_kosmos.get_powiekszenie()
 		scale = Vector2(1,1) * wywalenie_w_kosmos.get_powiekszenie()
 		move_and_slide(wywalenie_w_kosmos.where)
-		if wywalenie_w_kosmos.czas > 30:
+		if wywalenie_w_kosmos.should_usunac():
 			znikanko()
 			
 			
@@ -100,7 +102,7 @@ func znikanko():
 		get_node("../..").remove_child(get_node(".."))
 
 func calculate_move(target, position, speed, delta):
-	var res = (target_point - position).normalized() * get_speed()
+	var res = (target_point - position).normalized() * speed
 	var res2 = (target_point - position) / delta
 	return res if res.length() < res2.length() else res2
 
@@ -109,6 +111,8 @@ func contact(object):
 	if tamten.get_script().get_path() == "res://ZiomekBase.gd":
 		if (tamten.team == "rzym") && team == "galia":
 			print ("RZYMIANIE!")
-			tamten.wywal_w_kosmos(Vector2(1,0), 100)
+			if tamten.zrob_damage(1000000):
+				var kierunek = (tamten.position - position).normalized()
+				tamten.wywal_w_kosmos(kierunek * 600.0, 1.0)
 		elif (tamten.team == "galia") &&  team == "rzym":
 			print ("SQUAD 7 MOVE OUT!")
