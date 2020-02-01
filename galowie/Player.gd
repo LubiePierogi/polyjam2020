@@ -7,6 +7,7 @@ const Zaznaczenie = preload("res://Zaznaczenie.tscn")
 # var b = "text"
 
 var units = []
+var next_targets = []
 var vec1 = Vector2(0,0)
 var vecklik = Vector2(500,500)
 
@@ -29,6 +30,10 @@ func refresh_selection_circle():
 		selection_circle = null
 		
 
+func add_unit(unit):
+	units.push_back(unit)
+	next_targets.push_back(null)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	units.push_back("xddddd")
@@ -37,14 +42,19 @@ func _ready():
 	print("jabłuszka xd")
 	print(units)
 	units.clear()
-	units.push_back(get_node("../Reperix"))
-	units.push_back(get_node("../Almostherix"))
+	add_unit(get_node("../Reperix"))
+	add_unit(get_node("../Almostherix"))
 	print(units)
 
 
 func ogarnij_input():
 	if (Input.is_action_just_pressed("ui_iteration")):
 		iterate_selection()
+	if (Input.is_mouse_button_pressed(BUTTON_RIGHT)):
+		print("xd")
+		if selected_unit > -1 && selected_unit < len(units):
+			print("xdd")
+			next_targets[selected_unit] = get_viewport().get_mouse_position()
 
 func iterate_selection():
 	if len(units) > 0:
@@ -59,6 +69,15 @@ func _process(delta):
 	refresh_selection_circle()
 	
 func _on_Timer_timeout():
+	var i = 0
+	print("ewriopoewrpiorwe")
+	while i < len(units):
+		units[i].target_point = next_targets[i]
+		next_targets[i] = null
+		print("hahahahahahaha")
+		i = i + 1
+	return
+	
 	vec1 = get_node("../Reperix").get_position()
 	vec1 = vecklik - vec1
 	get_node("../Reperix").target_point = vec1
