@@ -12,6 +12,7 @@ extents = Vector2( 300, 10 )
 script = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="Reperix" parent="." instance=ExtResource( 1 )]
 position = Vector2( 379.34, 227.687 )
@@ -31,3 +32,4 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 script = ExtResource( 3 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
