@@ -32,4 +32,4 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 script = ExtResource( 3 )
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer" to="Player" method="_on_Timer_timeout"]

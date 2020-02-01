@@ -7,6 +7,9 @@ const Zaznaczenie = preload("res://Zaznaczenie.tscn")
 # var b = "text"
 
 var units = []
+var vec1 = Vector2(0,0)
+var vecklik = Vector2(500,500)
+
 
 var selected_unit = -1 # numer jednostki w tablicy 'units'
 var selection_circle = null
@@ -54,3 +57,12 @@ func iterate_selection():
 func _process(delta):
 	ogarnij_input()
 	refresh_selection_circle()
+	
+func _on_Timer_timeout():
+	vec1 = get_node("../Reperix").get_position()
+	vec1 = vecklik - vec1
+	get_node("../Reperix").target_point = vec1
+	vec1=get_node("../Almostherix").get_position()
+	vec1= vecklik - vec1
+	get_node("../Almostherix").target_point = vec1
+	pass # Replace with function body.
