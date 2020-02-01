@@ -103,6 +103,15 @@ func _ready():
 func ogarnij_input():
 	if (Input.is_action_just_pressed("ui_iteration")):
 		iterate_selection()
+	if (Input.is_action_just_pressed("Pierwszy")):
+		selected_unit = 0
+	if (Input.is_action_just_pressed("Drugi")):
+		selected_unit = 1
+	if (Input.is_action_just_pressed("Trzeci")):
+		selected_unit = 2
+	if (Input.is_action_just_pressed("Czwarty")):
+		selected_unit = 3
+	
 	if (Input.is_mouse_button_pressed(BUTTON_RIGHT)):
 		if selected_unit > -1 && selected_unit < len(units):
 			next_targets[selected_unit] = get_viewport().get_mouse_position()
