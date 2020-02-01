@@ -1,26 +1,30 @@
 extends Node
 
+const Zaznaczenie = preload("res://Zaznaczenie.tscn")
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 var units = []
- # false - niezaznaczone, true - zaznaczone
 
+var selected_unit = -1 # numer jednostki w tablicy 'units'
 var selection_circle = null
 
-func add_selection_circle():
-	pass
+func create_selection_circle():
+	selection_circle = Zaznaczenie.instance()
 
 func refresh_selection_circle():
-	for unit in units:
-		if units[unit]:
-			if true:#circles_iter >= circles_count:
-				add_selection_circle()
-				#selection_circles[circles_iter].position = unit.position
-				
-		#++circles_iter
+	if selected_unit > -1 and selection_circle:
+		selection_circle.position = units[selected_unit].position
+	elif selected_unit > -1 and not selected_unit:
+		selection_circle = Zaznaczenie.instance()
+		add_child(selection_circle)
+		selection_circle.position = units[selected_unit].position
+	elif selection_circle:
+		remove_child(selection_circle)
+		selection_circle = null
+		
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,8 +34,23 @@ func _ready():
 	print("jabłuszka xd")
 	print(units)
 	units.clear()
+	units.push_back(get_node("../Reperix"))
+	units.push_back(get_node("../Almostherix"))
+	print(units)
 
+
+func ogarnij_input():
+	if (Input.is_action_just_pressed("ui_iteration")):
+		iterate_selection()
+
+func iterate_selection():
+	if len(units) > 0:
+		selected_unit = (selected_unit + 1) % len(units)
+	else:
+		selected_unit = -1
+	print(selected_unit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	ogarnij_input()
+	refresh_selection_circle()
