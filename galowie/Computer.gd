@@ -1,6 +1,5 @@
 extends Node
 
-const Ziomek = preload("res://Ziomek.tscn")
 const Rzymianin = preload("res://Rzymianin.tscn")
 
 var rng = RandomNumberGenerator.new()
@@ -25,9 +24,9 @@ func create_unit(scene):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize() # Replace with function body.
-	create_unit(Ziomek).position = Vector2(100,100)
-	create_unit(Ziomek).position = Vector2(400,100)
-	create_unit(Ziomek).position = Vector2(700,100)
+	create_unit(Rzymianin).get_node("ZiomekBase").position = Vector2(100,100)
+	create_unit(Rzymianin).get_node("ZiomekBase").position = Vector2(400,100)
+	create_unit(Rzymianin).get_node("ZiomekBase").position = Vector2(700,100)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,7 +36,7 @@ func _process(delta):
 func _on_Timer_timeout():
 	var i = 0
 	while i < len(units):
-		units[i].target_point = Vector2(\
+		units[i].get_node("ZiomekBase").target_point = Vector2(\
 			rng.randf_range(100, 800) ,rng.randf_range(100, 800))
 		next_targets[i] = null
 		i = i + 1
