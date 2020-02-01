@@ -11,6 +11,10 @@ var target_point = null
 
 var animated_xd = false
 
+var base_speed = 600
+
+var team = "no" # "galia", "rzym"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +23,7 @@ func _ready():
 	pass # Replace with function body.
 
 func get_speed():
-	return 600
+	return base_speed
 
 func set_target(point):
 	target_point = point

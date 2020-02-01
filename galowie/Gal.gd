@@ -2,14 +2,13 @@ extends Node
 
 
 # Declare member variables here. Examples:
-# Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("ZiomekBase").team = "rzym" # Replace with function body.
+	get_node("ZiomekBase").team = "galia"  # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
