@@ -7,6 +7,7 @@ var rng = RandomNumberGenerator.new()
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var lewy = true
 
 var units = []
 var next_targets = []
@@ -79,3 +80,14 @@ func on_signal_finish_turn():
 		ziomek.set_target(null)
 		ziomek.set_animated(false)
 		i += 1
+
+
+func _on_Timer_CallEnemy():
+	var ziomek = create_unit(Rzymianin).get_node("ZiomekBase")
+	if lewy:
+		ziomek.position = Vector2(300,100)
+		lewy = false
+	else:
+		ziomek.position = Vector2(700,100)
+		lewy = true
+	pass # Replace with function body.

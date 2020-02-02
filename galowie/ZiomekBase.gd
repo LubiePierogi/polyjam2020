@@ -124,7 +124,7 @@ func contact(object):
 		print ("Getting boosted!")
 		zycko = max_zycko
 		pil_napoj = true
-		napoj_time = 60
+		napoj_time = 30
 	if tamten.get_script().get_path() == "res://ZiomekBase.gd":
 		if (tamten.team == "rzym") && team == "galia" && !tamten.is_animated():
 			tamten.zycko -= 60
@@ -133,7 +133,10 @@ func contact(object):
 				var kierunek = (tamten.position - position).normalized()
 				tamten.wywal_w_kosmos(kierunek * 600.0, 1.0)
 		elif (tamten.team == "galia") &&  team == "rzym" &&!tamten.is_animated():
-			tamten.zycko -= 60
+			if tamten.pil_napoj == true:
+				tamten.zycko -= 1
+			else:
+				tamten.zycko -= 60
 			print ("SQUAD 7 MOVE OUT!")
 
 
