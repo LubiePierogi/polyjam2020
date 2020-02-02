@@ -17,7 +17,10 @@ func _ready():
 
 func dotyk(object):
 	if (object.get_owner()).team == "galia" && zycko < max_zycko && object.get_owner().get_script().get_path() == "res://ZiomekBase.gd":
-		zycko += 20
+		if (object.get_owner()).pil_napoj == true:
+			zycko += 50
+		else:
+			zycko += 20
 	if (object.get_owner()).team == "rzym":
 		zycko -= 40
 		if (zycko <0):
