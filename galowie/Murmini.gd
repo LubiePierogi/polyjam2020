@@ -20,8 +20,13 @@ func dotyk(object):
 		if (object.get_owner()).pil_napoj == true:
 			zycko += max_zycko
 		else:
-		zycko += 20
+			zycko += 20
 	if (object.get_owner()).team == "rzym":
 		zycko -= 40
 		if (zycko <0):
 			queue_free()
+
+
+func _on_Murmini_mouse_entered():
+	print("b")
+	get_node("../..").mouse_entered(self)

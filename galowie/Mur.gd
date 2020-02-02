@@ -25,3 +25,8 @@ func dotyk(object):
 		zycko -= 40
 		if (zycko <0):
 			queue_free()
+
+
+func _on_Mur_mouse_entered():
+	print("a")
+	get_node("../..").mouse_entered(self)
