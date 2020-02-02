@@ -7,7 +7,7 @@
 [ext_resource path="res://Computer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Computer.gd" type="Script" id=6]
 [ext_resource path="res://Kociolek.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Mur.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Miasto.tscn" type="PackedScene" id=8]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
@@ -17,6 +17,8 @@ wait_time = 3.0
 autostart = true
 script = ExtResource( 1 )
 
+[node name="Miasto" parent="." instance=ExtResource( 8 )]
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 script = ExtResource( 3 )
 
@@ -24,13 +26,10 @@ script = ExtResource( 3 )
 script = ExtResource( 6 )
 
 [node name="Kociolek" parent="." instance=ExtResource( 7 )]
-position = Vector2( 74.0247, 508.92 )
-
-[node name="Mur" parent="." instance=ExtResource( 8 )]
-position = Vector2( 550.245, 308.376 )
+position = Vector2( 487.772, 523.653 )
 [connection signal="CallEnemy" from="Timer" to="Computer" method="_on_Timer_CallEnemy"]
-[connection signal="EnemyTurn" from="Timer" to="Player" method="on_signal_finish_turn"]
 [connection signal="EnemyTurn" from="Timer" to="Computer" method="on_signal_start_turn"]
-[connection signal="PlayerTurn" from="Timer" to="Player" method="on_signal_start_turn"]
+[connection signal="EnemyTurn" from="Timer" to="Player" method="on_signal_finish_turn"]
 [connection signal="PlayerTurn" from="Timer" to="Computer" method="on_signal_finish_turn"]
+[connection signal="PlayerTurn" from="Timer" to="Player" method="on_signal_start_turn"]
 [connection signal="timeout" from="Timer" to="Timer" method="_on_Timer_timeout"]
