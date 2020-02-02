@@ -23,16 +23,23 @@ var target_iks2 = null
 func create_selection_circle():
 	selection_circle = Zaznaczenie.instance()
 
+func set_selection_circle(where):
+	if where:
+		if !selection_circle:
+			selection_circle = Zaznaczenie.instance()
+			add_child(selection_circle)
+		selection_circle.position = where
+	else:
+		if selection_circle:
+			remove_child(selection_circle)
+			selection_circle = null
+
+
 func refresh_selection_circle():
-	if selected_unit > -1 and selection_circle:
-		selection_circle.position = units[selected_unit].get_node("ZiomekBase").position
-	elif selected_unit > -1 and not selected_unit:
-		selection_circle = Zaznaczenie.instance()
-		add_child(selection_circle)
-		selection_circle.position = units[selected_unit].get_node("ZiomekBase").position
-	elif selection_circle:
-		remove_child(selection_circle)
-		selection_circle = null
+	if selected_unit > -1:
+	  set_selection_circle(units[selected_unit].get_node("ZiomekBase").position)
+	else:
+		set_selection_circle(null)
 
 
 
@@ -79,7 +86,7 @@ func create_unit(scene):
 	
 func delete_unit(unit):
 	remove_child(unit)
-	for i in units:
+	for i in range(len(units)):
 		if units[i] == unit:
 			units.erase(i)
 			if selected_unit == i:

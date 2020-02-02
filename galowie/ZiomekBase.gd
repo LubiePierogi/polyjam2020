@@ -93,11 +93,14 @@ func _physics_process(delta):
 		move_and_slide(wywalenie_w_kosmos.where)
 		if wywalenie_w_kosmos.should_usunac():
 			znikanko()
-	if napoj_time >0:
+	elif !is_alive():
+		# podstawowo -- znikanie prawie
+		wywal_w_kosmos(Vector2(0,0), 0.5)
+	if napoj_time > 0.0:
 		napoj_time -= delta
-	if zycko < 0 && team == "galia":
+	if !is_alive() && team == "galia":
 		print ("DED galia")
-	if zycko <0 && team == "rzym":
+	if !is_alive() && team == "rzym":
 		print ("DED rzym")
 			
 			
