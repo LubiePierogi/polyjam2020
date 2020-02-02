@@ -75,3 +75,9 @@ func on_signal_finish_turn():
 		ziomek.set_target(null)
 		ziomek.set_animated(false)
 		i += 1
+
+
+func _on_Timer_CallEnemy():
+	var ziomek = create_unit(Rzymianin).get_node("ZiomekBase")
+	ziomek.position = Vector2(300,200)
+	pass # Replace with function body.

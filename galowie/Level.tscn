@@ -28,8 +28,9 @@ position = Vector2( 74.0247, 508.92 )
 
 [node name="Mur" parent="." instance=ExtResource( 8 )]
 position = Vector2( 550.245, 308.376 )
-[connection signal="EnemyTurn" from="Timer" to="Computer" method="on_signal_start_turn"]
+[connection signal="CallEnemy" from="Timer" to="Computer" method="_on_Timer_CallEnemy"]
 [connection signal="EnemyTurn" from="Timer" to="Player" method="on_signal_finish_turn"]
-[connection signal="PlayerTurn" from="Timer" to="Computer" method="on_signal_finish_turn"]
+[connection signal="EnemyTurn" from="Timer" to="Computer" method="on_signal_start_turn"]
 [connection signal="PlayerTurn" from="Timer" to="Player" method="on_signal_start_turn"]
+[connection signal="PlayerTurn" from="Timer" to="Computer" method="on_signal_finish_turn"]
 [connection signal="timeout" from="Timer" to="Timer" method="_on_Timer_timeout"]
