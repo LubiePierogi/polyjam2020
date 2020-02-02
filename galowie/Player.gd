@@ -1,6 +1,7 @@
 extends Node
 
 const Zaznaczenie = preload("res://Zaznaczenie.tscn")
+const Hover = preload("res://Hover.tscn")
 const Iks = preload("res://Iks.tscn")
 const Iks2 = preload("res://Iks2.tscn")
 const Gal = preload("res://Gal.tscn")
@@ -17,11 +18,23 @@ var vecklik = Vector2(500,500)
 
 var selected_unit = -1 # numer jednostki w tablicy 'units'
 var selection_circle = null
+var hover_circle = null
+var hover_unit = null
 var target_iks = null
 var target_iks2 = null
 
-func create_selection_circle():
-	selection_circle = Zaznaczenie.instance()
+
+func set_hover_circle(where):
+	if where:
+		if !hover_circle:
+			hover_circle = Hover.instance()
+			add_child(hover_circle)
+		hover_circle.position = where
+	else:
+		if hover_circle:
+			remove_child(hover_circle)
+			hover_circle = null
+
 
 func set_selection_circle(where):
 	if where:
@@ -41,6 +54,14 @@ func refresh_selection_circle():
 	else:
 		set_selection_circle(null)
 
+
+func refresh_hover_circle():
+	if hover_unit && !hover_unit.get_node_or_null(".."):
+		hover_unit = null
+	if hover_unit:
+	  set_hover_circle(hover_unit.position)
+	else:
+		set_hover_circle(null)
 
 
 func set_iks(first, second):
@@ -142,8 +163,15 @@ func iterate_selection():
 func _process(delta):
 	ogarnij_input()
 	refresh_selection_circle()
+	refresh_hover_circle()
 	refresh_iks()
-	
+
+func mouse_entered(unit):
+	get_node("..").mouse_entered(unit)
+
+func hover(unit):
+	hover_unit = unit
+
 func _on_Timer_timeout():
 	var i = 0
 	while i < len(units):

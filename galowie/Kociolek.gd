@@ -18,3 +18,7 @@ func healing(object):
 	if (object.get_owner()).team == "galia" :
 		print("HULK!")
 		(object.get_owner()).zycko = (object.get_owner()).max_zycko
+
+
+func _on_Kociolek_mouse_entered():
+	get_node("..").mouse_entered(self)

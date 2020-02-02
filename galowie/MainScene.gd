@@ -93,3 +93,9 @@ func delete_hud():
 	if hud:
 		ui.remove_child(hud)
 		hud = null
+
+func mouse_entered_unit(unit):
+	var unit_bar = get_node("UI/HUD/TopBar/UnitBar")
+	unit_bar.set_name("")
+	unit_bar.set_health(unit.zycko, unit.max_zycko)
+	

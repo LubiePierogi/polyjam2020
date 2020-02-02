@@ -135,3 +135,8 @@ func contact(object):
 		elif (tamten.team == "galia") &&  team == "rzym" &&!tamten.is_animated():
 			tamten.zycko -= 60
 			print ("SQUAD 7 MOVE OUT!")
+
+
+func _on_ZiomekBase_mouse_entered():
+	print("xd")
+	get_node("../..").mouse_entered(self)

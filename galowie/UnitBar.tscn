@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UnitBar.gd" type="Script" id=1]
+
+[node name="UnitBar" type="Control"]
+anchor_left = 0.098
+anchor_top = 0.042
+anchor_right = 0.356
+anchor_bottom = 0.083
+margin_left = -39.8145
+margin_top = -4.46752
+margin_right = -60.0065
+margin_bottom = 21.9325
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 0.385
+anchor_bottom = 0.627
+margin_top = 18.0
+margin_right = -93.94
+margin_bottom = 0.0229988
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchor_left = 0.5
+anchor_top = 0.442
+anchor_right = 1.093
+anchor_bottom = 0.717
+margin_left = -2.81812
+margin_top = 0.020483
+margin_right = -0.038147
+margin_bottom = -0.0045166
+__meta__ = {
+"_edit_use_anchors_": false
+}

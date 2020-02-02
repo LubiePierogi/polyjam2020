@@ -58,6 +58,10 @@ func plan_next_turn():
 		i += 1
 	
 
+
+func mouse_entered(unit):
+	get_node("..").mouse_entered(unit)
+
 func on_signal_start_turn():
 	plan_next_turn()
 	var i = 0

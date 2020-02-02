@@ -10,6 +10,7 @@ radius = 50.0
 radius = 56.0089
 
 [node name="ZiomekBase" type="KinematicBody2D"]
+input_pickable = true
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -19,6 +20,8 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
+input_pickable = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
+[connection signal="mouse_entered" from="." to="." method="_on_ZiomekBase_mouse_entered"]
