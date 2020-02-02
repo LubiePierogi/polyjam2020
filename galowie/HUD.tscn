@@ -11,13 +11,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = 57.9345
-margin_top = 27.765
-margin_right = 163.934
-margin_bottom = 41.765
-text = "fgfgfgfgfgfgfgfgfgg"
-
 [node name="TopBar" type="Control" parent="."]
 margin_left = 248.0
 margin_top = 8.0

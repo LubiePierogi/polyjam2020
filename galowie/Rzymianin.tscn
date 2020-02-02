@@ -10,6 +10,8 @@ script = ExtResource( 3 )
 [node name="ZiomekBase" parent="." instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="ZiomekBase" index="0"]
+position = Vector2( -5, -10 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
 
 [editable path="ZiomekBase"]
