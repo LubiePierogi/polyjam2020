@@ -95,6 +95,10 @@ func _physics_process(delta):
 			znikanko()
 	if napoj_time >0:
 		napoj_time -= delta
+	if zycko < 0 && team == "galia":
+		print ("DED galia")
+	if zycko <0 && team == "rzym":
+		print ("DED rzym")
 			
 			
 
@@ -119,10 +123,12 @@ func contact(object):
 		pil_napoj = true
 		napoj_time = 60
 	if tamten.get_script().get_path() == "res://ZiomekBase.gd":
-		if (tamten.team == "rzym") && team == "galia":
+		if (tamten.team == "rzym") && team == "galia" && !tamten.is_animated():
+			tamten.zycko -= 60
 			print ("RZYMIANIE!")
 			if tamten.zrob_damage(1000000):
 				var kierunek = (tamten.position - position).normalized()
 				tamten.wywal_w_kosmos(kierunek * 600.0, 1.0)
-		elif (tamten.team == "galia") &&  team == "rzym":
+		elif (tamten.team == "galia") &&  team == "rzym" &&!tamten.is_animated():
+			tamten.zycko -= 60
 			print ("SQUAD 7 MOVE OUT!")
