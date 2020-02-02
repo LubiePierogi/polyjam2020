@@ -2,7 +2,7 @@ extends StaticBody2D
 
 var team = "galia"
 
-var max_zycko = 200
+var max_zycko = 50
 var zycko = max_zycko
 
 # Called when the node enters the scene tree for the first time.
