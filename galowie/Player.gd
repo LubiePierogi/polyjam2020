@@ -6,6 +6,10 @@ const Iks = preload("res://Iks.tscn")
 const Iks2 = preload("res://Iks2.tscn")
 const Gal = preload("res://Gal.tscn")
 
+const ast = preload("res://gal1.png")
+const gal2 = preload("res://gal4.png")
+const gal3 = preload("res://gal3.png")
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -118,14 +122,18 @@ func delete_unit(unit):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	create_unit(Gal).get_node("ZiomekBase").position = Vector2(400,600)
-	create_unit(Gal).get_node("ZiomekBase").position = Vector2(500,600)
-	var haha = create_unit(Gal).get_node("ZiomekBase")
-	haha.position = Vector2(600,600)
-	#haha.zycko = -3
-	create_unit(Gal).get_node("ZiomekBase").position = Vector2(700,600)
-	#add_unit(get_node("../Reperix"))
-	#add_unit(get_node("../Almostherix"))
+	var gall
+	gall = create_unit(Gal).get_node("ZiomekBase")
+	gall.position = Vector2(400,600)
+	gall.get_node("Sprite").set_texture(ast)
+	gall = create_unit(Gal).get_node("ZiomekBase")
+	gall.position = Vector2(500,600)
+	gall.get_node("Sprite").set_texture(gal2)
+	gall = create_unit(Gal).get_node("ZiomekBase")
+	gall.position = Vector2(600,600)
+	gall.get_node("Sprite").set_texture(gal3)
+	gall = create_unit(Gal).get_node("ZiomekBase")
+	gall.position = Vector2(700,600)
 
 
 func ogarnij_input():
