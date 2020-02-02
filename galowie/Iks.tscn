@@ -3,4 +3,5 @@
 [ext_resource path="res://iks.png" type="Texture" id=1]
 
 [node name="Sprite" type="Sprite"]
+z_index = 1000
 texture = ExtResource( 1 )

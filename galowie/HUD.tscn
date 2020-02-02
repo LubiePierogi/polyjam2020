@@ -1,0 +1,15 @@
+[gd_scene format=2]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 304.057
+margin_top = 159.002
+margin_right = 410.057
+margin_bottom = 407.002
+text = "fgfgfgfgfgfgfgfgfgg"
