@@ -18,5 +18,3 @@ margin_left = 492.0
 margin_top = 280.0
 margin_right = 1132.0
 margin_bottom = 760.0
-[connection signal="button_play" from="UI/MainMenu" to="." method="on_signal_play"]
-[connection signal="button_quit" from="UI/MainMenu" to="." method="on_signal_quit"]
